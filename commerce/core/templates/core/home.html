@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% load static %}
+<body>
+    <link href = "{% static "styles/navbar.css" %}" rel = "stylesheet"/>
+    <div class="nav-container">
+        <nav class="nav-bar">
+            <div class = "inner-nav-container">
+                <span class= "logo">
+                    <h2> Ecommerce </h2>
+                </span>
+                <ul class="nav-list">
+                    <li><a href = "#home"> Home </a></li>
+                    <li><a href = "#about"> About </a></li>
+                    <li><a href = "#products"> Products </a></li>
+                    <li><a href = "#contact"> Contact </a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href = "/itemform"> Add product </a></li>
+                    {% endif %}
+                </ul>
+                <div class = "btn-container"> 
+                    {%if user.is_authenticated%}
+                    <span class = "btn"><a href = "/logout"> LOGOUT </a></span>
+                    {% else %}
+                    <span class = "btn"><a href = "/login"> LOGIN  </a> </span>
+                    <span class = "btn"><a href = "/"> SIGNUP </a></span>
+                    {% endif %}
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    <main class = "home" id="home"> 
+        <div class = "home-content">
+                <div class = "welcome">
+                    {% if user.is_authenticated %}
+                    <span class = "upper-span"> Welcome </span>
+                    <span class = "lower-span"> {{user.username}} </span>
+
+                    {% else %}
+                    <span class = "upper-span"> Welcome to</span>
+                    <span class = "lower-span"> my Ecommerce</span>
+                    {% endif %}
+                </div>
+                <div class = "second-part">
+                    <img src = "{% static "images/simpson.jpg" %}" class = "simpson"/>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main>
+    <div id = "about">
+        <h1> Our official Sponsors</h1> 
+        <div class = "sponsors">
+            <div class = 'img'>
+                <img src="{% static "images/google-animated-logo-design.gif" %}" alt="Google logo">
+            </div>
+            <div class = 'img'>
+                <img src="{% static "images/IBM-Company-Logo-Design-610x366.webp" %}" alt="IBM logo">
+            </div>
+            <div class = 'img'>
+                <img src="{% static "images/amazon-logo-design-1024x640.png" %}" alt="Amazon logo">
+            </div>
+            <div class = 'img'>
+                <img src="{% static "images/current-apple-logo-design-1024x640.png" %}" alt="Iphone logo">
+            </div>
+            <div class = "img">
+                <img src="{% static "images/Microsoft-Logo-Design-610x366.png" %}" alt="Microsoft logo">
+            </div>
+        <div>
+    </div>
+    </main>
+
+    <div class = "products-container">
+    {% for object in objects %}
+
+    <div class = "items" id = "products">
+        <div class = "inner-div">
+            <a href = "{{object.get_absolute_url}}">
+            <div class = "img-details">
+                <h1> {{object.name}} </h1>
+                <img src = "{{object.image.url}}" class="item-img"/>
+            </div>
+            <div class="cart">
+                <span> <a href = ""> Add to cart </a> </span>
+                <span> ${{object.price}} </span>
+            </div>
+        </a>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    </div>  
+    <div id = "contact">
+        <div class = "mail">
+            <h1> SEND US A MAIL </h1>
+        </div>
+        <div class = "form">
+            <form action="." method = "POST">
+                {% csrf_token %}
+                <div class="label-container">
+                    <label for="firstname"> ENTER FIRSTNAME:: </label><br/>
+                    <input type="text" name="firstname" id="firstname">
+                </div>
+                <div class="label-container">
+                    <label for="lastname"> ENTER LASTNAME:: </label><br/>
+                    <input type="text" name="lastname" id="lastname">
+                </div>
+                <div class="label-container">
+                    <label for="email"> ENTER EMAIL:: </label><br/>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="label-container">
+                    <label for="message"> ENTER Message:: </label><br/>
+                    <textarea name="message" id="message" cols="50" rows="10"></textarea>
+                </div>
+                <button type="submit">send mail</button>
+            </form>
+        </div>
+    </div> 
+    <footer></footer>
+</body>
+<script src ="{% static "javascripts/home.js" %}">  </script>
+{% endblock title %}

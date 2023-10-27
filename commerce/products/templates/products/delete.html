@@ -1,0 +1,9 @@
+{% extends "registration/signup.html" %}
+
+{% block title %}
+<form action="." method = "POST">
+    {% csrf_token %}
+    {{form.as_p}}
+</form>
+<button> Delete </button>
+{% endblock title %}

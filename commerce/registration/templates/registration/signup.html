@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}
+{% load static %}
+<link href = "{% static "styles/forms.css" %}"  rel = "stylesheet"/>
+
+{% if myform.errors or myform.non_field_errors %}
+    <ul>
+        {% for fields in myform %}
+            {{fields.errors}}
+        {% endfor %}
+    </ul>
+{% endif %}
+<div class = "form-container">
+            <form method = "POST" action = ".">
+                {% csrf_token %}
+                    {% comment %} {{myform.non_field_errors}} {% endcomment %}
+                    <div class="label-container">
+                        <label for = "id_username">ENTER USERNAME:: </label><br>
+                        {{myform.username}}
+                    </div>
+                    
+                    <div class="label-container">
+                        <label id ="id_email">ENTER EMAIL:: </label><br>
+                        {{myform.email}}
+                    </div>
+                    
+                    <div class="label-container">
+                        <label id = "id_password1">ENTER PASSWORD:: </label><br>
+                        {{myform.password1}}
+                    </div>
+                    
+                    <div class="label-container">
+                        <label id = "id_password2">PLEASE REPEAT PASSWORD:: </label><br>
+                        {{myform.password2}}
+                    </div>
+                    <div class= "btn-container">
+                        <button type="submit">SUBMIT</button>
+                    </div>
+                    <div class = "text">
+                        <p> ALready have an account? <a href = "login/"> LOGIN HERE </a></p>
+                    </div>
+                </form>
+            </div>
+        <script src = "{% static "javascripts/app.js" %}" ></script>
+{% endblock title %}

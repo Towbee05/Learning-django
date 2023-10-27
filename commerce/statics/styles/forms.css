@@ -1,0 +1,116 @@
+:root{
+    /* General */
+    --background2 : linear-gradient(to right, #02AABD, #00CDAC);
+    --background : #fff;
+    --color : #000;
+    /* Form */
+    --form-container-color : #fff;     
+    --label-container-margin : 2rem;
+    /* Form input */
+    --input-margin : 0.5rem 0 0 0;
+    --input-border : 2px solid #000;
+    --input-border-radius: 5px;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+}
+
+/* signup */
+form{
+    text-align: center;
+}
+.form-container::before{
+    content: "";
+    position: absolute;
+    height: 530px;
+    width: 510px;
+    background: var(--background2);
+    z-index: -1;
+    border-radius:10px;
+}
+
+.form-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 520px;
+    width: 500px;
+    background: var(--form-container-color);
+    transform: translate(-50%,-50%);
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.label-container{
+    margin: var(--label-container-margin);
+    font-size: 20px;
+}
+
+.input{
+    width: 20rem;
+    margin: var(--input-margin);
+    line-height: 25px;
+    border: var(--input-border);
+    border-radius: var(--input-border-radius);
+    font-size: 16px;
+}
+
+.btn-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    height: 2rem;
+    width: 7rem;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+button:hover{
+    box-shadow: 2px 10px 10px #808080;
+    height: 1.8rem;
+    width: 6.8rem;
+}
+
+.hide-error{
+    visibility: hidden;
+}
+
+/* login */
+
+.loginForm-container::before{
+    content: "";
+    position: absolute;
+    height: 310px;
+    width: 510px;
+    background: var(--background2);
+    z-index: -1;
+    border-radius:10px;
+}
+
+.loginForm-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 300px;
+    width: 500px;
+    background: var(--form-container-color);
+    transform: translate(-50%,-50%);
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+
+
+
+
+
+

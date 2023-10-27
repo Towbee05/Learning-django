@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% load static %}
+<link href = "{% static "styles/forms.css" %}"  rel = "stylesheet"/>
+
+
+<div>
+    {% for message in messages %}
+    <p> {{message}}</p>
+    {% endfor %}
+</div>
+<div class = "loginForm-container">
+    <form action = "." method = "POST">
+        {% csrf_token %}
+        <div class="label-container">
+            <label for = "id_username">ENTER USERNAME:: </label><br>
+            <input type="text" name="username" id="username" class="input">
+        </div>
+        <div class="label-container">
+            <label id = "id_password1">ENTER PASSWORD:: </label><br>
+            <input type="password" name="password" id="password" class="input">
+        </div>
+        <div class= "btn-container">
+            <button type="submit">SUBMIT</button>
+        </div>
+        
+    </form>
+</div>
+
+{% endblock title %}
